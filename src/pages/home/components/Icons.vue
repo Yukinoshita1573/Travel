@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-      <swiper>
+      <swiper :options="swiperOptions">
           <swiper-slide v-for="(page,index) in pages" :key="index">
               <div class="icon" v-for="item in page" :key="item.id">
                 <div class="icon-img">
@@ -16,61 +16,20 @@
 <script>
 export default {
   name : 'HomeIcons',
+  props:{
+      list:Array
+  },
   data(){
       return {
-          iconList:[
-              {
-                  id:'0001',
-                  imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-                  desc:'景点门票'
-              },
-              {
-                  id:'0002',
-                  imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-                  desc:'滑雪季'
-              },
-              {
-                  id:'0003',
-                  imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-                  desc:'泡温泉'
-              },
-              {
-                  id:'0004',
-                  imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-                  desc:'动植物园'
-              },
-              {
-                  id:'0005',
-                  imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-                  desc:'一日游'
-              },
-              {
-                  id:'0006',
-                  imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-                  desc:'必游榜单'
-              },
-              {
-                  id:'0007',
-                  imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-                  desc:'自然风光'
-              },
-              {
-                  id:'0008',
-                  imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-                  desc:'全部'
-              },
-            //   {
-            //       id:'0009',
-            //       imgUrl:'//img1.qunarzz.com/sight/p0/1807/7d/7d64de6b134d10eaa3.img.jpg_600x330_0297e8aa.jpg',
-            //       desc:'全部'
-            //   }
-          ]
+          swiperOptions:{
+              autoplay:false
+          }
       }
   },
   computed:{
       pages(){
           const pages = []
-          this.iconList.forEach((item,index)=>{
+          this.list.forEach((item,index)=>{
               const page = Math.floor(index / 8)
               if(!pages[page]){
                   pages[page] = []
