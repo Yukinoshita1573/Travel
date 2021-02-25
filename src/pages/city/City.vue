@@ -50,7 +50,7 @@ export default {
           }
       },
       handleLetterChange(letter){
-        //   console.log(e);
+          console.log(letter);
         this.letter = letter
       }
   },
